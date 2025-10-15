@@ -7,9 +7,9 @@ import lombok.*;
 @Table(name = "statuses")
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Getter
 @Setter
+@Builder
 public class Status {
 
     @Id

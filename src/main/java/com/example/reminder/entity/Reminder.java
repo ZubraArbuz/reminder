@@ -9,9 +9,9 @@ import java.time.LocalDateTime;
 @Table(name = "reminders")
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Getter
 @Setter
+@Builder
 public class Reminder {
 
     @Id
