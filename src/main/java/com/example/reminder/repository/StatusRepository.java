@@ -1,4 +1,10 @@
 package com.example.reminder.repository;
 
-public class StatusRepository {
+import com.example.reminder.entity.Status;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
+
+public interface StatusRepository extends JpaRepository<Status,Integer> {
+    Optional<Status> findByName(String name);
 }
