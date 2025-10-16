@@ -1,10 +1,13 @@
 package com.example.reminder.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "reminders")
@@ -36,4 +39,7 @@ public class Reminder {
     @JoinColumn(name = "status_id")
     private Status status;
 
+    @OneToMany(mappedBy = "reminder", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference
+    private List<ReminderHistory> histories = new ArrayList<>();
 }

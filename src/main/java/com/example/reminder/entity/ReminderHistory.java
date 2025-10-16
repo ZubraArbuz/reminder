@@ -1,5 +1,6 @@
 package com.example.reminder.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,6 +21,7 @@ public class ReminderHistory {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "reminder_id")
+    @JsonBackReference
     private Reminder reminder;
 
     @Column(name = "changedAt", nullable = false)
