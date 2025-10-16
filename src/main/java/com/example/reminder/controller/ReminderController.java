@@ -1,12 +1,15 @@
 package com.example.reminder.controller;
 
 import com.example.reminder.entity.Reminder;
+import com.example.reminder.entity.ReminderHistory;
 import com.example.reminder.service.ReminderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/remiders")
@@ -43,4 +46,10 @@ public class ReminderController {
         reminderService.deleteReminder(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/{id}/history")
+    public ResponseEntity<List<ReminderHistory>> getReminderHistory(@PathVariable int id) {
+        return ResponseEntity.ok(reminderService.getHistoryByReminder(id));
+    }
+
 }
